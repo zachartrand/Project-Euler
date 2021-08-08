@@ -23,4 +23,4 @@ for i in reversed(range(NUMBER)):
 palindromes.sort(reverse=True)
 
 # print(palindromes)
-print(max(palindromes))
+print(max(palindromes))  # 906609
