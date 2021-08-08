@@ -12,15 +12,14 @@ Largest palindrome product
 
 NUMBER = 1000
 
-palindromes = []
-for i in reversed(range(NUMBER)):
-    for j in reversed(range(i+1)):
+palindromes = {}
+for i in reversed(range(100, NUMBER)):
+    for j in reversed(range(100, i+1)):
         product = i*j
         number_string = str(product)
         if number_string == number_string[::-1] and product not in palindromes:
-            palindromes.append(product)
+            palindromes[product] = f"{i}x{j}"
 
-palindromes.sort(reverse=True)
+max_palindrome = max(palindromes.keys())
 
-# print(palindromes)
-print(max(palindromes))  # 906609
+print(max_palindrome, palindromes[max_palindrome])  # 906609 993x913
