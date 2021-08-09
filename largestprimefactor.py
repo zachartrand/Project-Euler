@@ -1,3 +1,4 @@
+#! usr/bin/python3
 """
 @author: Zach Chartrand <zachartrand999@gmail.com>
 
@@ -11,27 +12,52 @@ Largest prime factor
 
 NUMBER = 600851475143
 
+
 def prime_sieve(n):
     """Find all primes smaller than n."""
-    sqrt_n = int(n**0.5)
-    primes = []
+    sqrt_n = int(n**0.5) + 1  # The '+ 1' is so it behaves with the range() function.
     array = [True for _ in range(n)]
     array[0] = array[1] = False
     for i in range(2, sqrt_n):
         if array[i]:
+            index = i*i
+            while index < n:
+                array[index] = False
+                index += i
+
+    primes = []
+    for i, value in enumerate(array):
+        if value:
             primes.append(i)
-            for j in range(n):
-                index = i*i + j*i
-                if index < n:
-                    array[index] = False
-                else:
-                    break
 
     return primes
 
-if __name__ == "__main__":
-    primes = prime_sieve(int(NUMBER**0.5))
+
+def lowest_prime_squared(n):
+    """
+    Find the smallest prime number that, when squared twice, is greater than n,
+    and return its square.
+    """
+    small = int((n**0.5)**0.5)
+    primes = prime_sieve(small*2)
+    for prime in primes:
+        if prime > small:
+            return prime**2
+
+
+def main(n):
+    primes = prime_sieve(lowest_prime_squared(n))
+    answer = 0
     for prime in reversed(primes):
-        if NUMBER % prime == 0:
-            print(prime)  # 839
+        if n % prime == 0:
+            answer = prime
             break
+
+    if answer != 0:
+        print(answer)
+    else:  # If none of the primes are factors of n, then n itself must be prime.
+        print(n)
+
+
+if __name__ == "__main__":
+    main(NUMBER)  # 6857
