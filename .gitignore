@@ -1,0 +1,11 @@
+# Text files #
+##############
+*.txt
+
+# Pycache folder #
+##################
+__pycache__
+
+# Private folder #
+##################
+private
