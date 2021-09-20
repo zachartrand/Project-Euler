@@ -1,11 +1,14 @@
-# Text files #
+# Files #
 ##############
-*.txt
+*key.txt
 
-# Pycache folder #
+# Folders #
 ##################
 __pycache__
-
-# Private folder #
-##################
 private
+.ipynb_checkpoints
+Solution PDFs
+
+# Python scripts that don't belong #
+####################################
+pythagorean_triples.py
