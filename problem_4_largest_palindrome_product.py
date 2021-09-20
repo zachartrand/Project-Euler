@@ -12,7 +12,7 @@ Largest palindrome product
 
 NUMBER = 1000
 
-palindromes = {}
+palindromes = {}  # Store values as palindrome: factors.
 for i in reversed(range(100, NUMBER)):
     for j in reversed(range(100, i+1)):
         product = i*j

@@ -11,7 +11,7 @@ Smallest multiple
     numbers from 1 to 20?
 """
 
-from largestprimefactor import prime_sieve
+from problem_3_largest_prime_factor import prime_sieve
 
 NUMBER = 20
 
