@@ -9,7 +9,7 @@ Summation of primes
     Find the sum of all the primes below two million.
 """
 
-from problem_03_largest_prime_factor import prime_sieve
+from eulerlib import prime_sieve
 
 NUMBER = int(2e6)
 
