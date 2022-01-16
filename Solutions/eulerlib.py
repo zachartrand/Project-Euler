@@ -22,8 +22,8 @@ def prime_sieve(n, /):
                 index += i
 
     primes = []
-    for i, value in enumerate(array):
-        if value:
+    for i, is_prime in enumerate(array):
+        if is_prime:
             primes.append(i)
 
     return primes
