@@ -9,17 +9,20 @@ To be imported with the statement
 import math
 
 
-def prime_sieve(n, /):
+def prime_sieve(n: int, /) -> list:
     """Find all primes smaller than n."""
+    try:
+        n = int(n)
+    except:
+        raise TypeError("n must be an int or float.")
     sqrt_n = int(n**0.5) + 1  # The '+ 1' is so it behaves with the range() function.
     array = [True for _ in range(n)]
     array[0] = array[1] = False
     for i in range(2, sqrt_n):
         if array[i]:
             index = i*i
-            while index < n:
-                array[index] = False
-                index += i
+            for j in range(index, n, i):
+                array[j] = False
 
     primes = []
     for i, is_prime in enumerate(array):
@@ -29,7 +32,7 @@ def prime_sieve(n, /):
     return primes
 
 
-def get_factors(n, /):
+def get_factors(n: int, /) -> list:
     """Return all factors of n not including n itself."""
     factors = [1]
     for i in range(2, math.floor(math.sqrt(n)) + 1):
@@ -75,7 +78,7 @@ def get_distinct_prime_factors(n: int, /) -> list:
     return prime_factors
 
 
-def totient(n: int, /):
+def totient(n: int, /) -> int:
     totient = n
     p = 2
     while p*p <= n:
